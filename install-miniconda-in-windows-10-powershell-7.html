@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Pydium - Install Miniconda in Windows 10 PowerShell 7</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://honghe.github.io/jack/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Full Atom Feed" />
+        <link href="https://honghe.github.io/jack/feeds/cs.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Categories Atom Feed" />
+        <link rel="stylesheet" type="text/css" href="https://honghe.github.io/jack/theme/css/main.css" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+  <div class="content">
+        <header id="banner" class="body">
+                <h1><a href="https://honghe.github.io/jack/">Pydium</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+          <li><a href="https://honghe.github.io/jack/archives.html">Archives</a></li>
+            <li class="active"><a href="https://honghe.github.io/jack/category/cs.html">CS</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://honghe.github.io/jack/install-miniconda-in-windows-10-powershell-7.html" rel="bookmark"
+         title="Permalink to Install Miniconda in Windows 10 PowerShell 7">Install Miniconda in Windows 10 PowerShell 7</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2021-02-23T18:20:00+08:00">
+      Tue 23 February 2021
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://honghe.github.io/jack/category/cs.html">CS</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h1>Steps</h1>
+<ol>
+<li>
+<p>Download Miniconda installer and install (use the default option).</p>
+</li>
+<li>
+<p>Open Anaconda PowerShell Prompt to init PowerShell, it will generate file <code>Documents\WindowsPowerShell\profile.ps1</code>.</p>
+<p><code>conda init powershell</code></p>
+</li>
+<li>
+<p>Meet the execution policies problem when open new PowerShell Prompt.</p>
+<p><code>conda Documents\WindowsPowerShell\profile.ps1  cannot be loaded because running scripts is disabled on this system.</code></p>
+</li>
+<li>
+<p>Deal with the above <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1">Windows Execution Policies</a> problem.</p>
+<ul>
+<li>Open PowerShell as Administrator.</li>
+<li>[Maybe] <code>Unblock-File</code> the <code>Documents\WindowsPowerShell\profile.ps1</code>.</li>
+<li><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned</code>. Ref: <a href="https://github.com/conda/conda/issues/8428">https://github.com/conda/conda/issues/8428.</a></li>
+</ul>
+</li>
+<li>
+<p>Done.</p>
+</li>
+</ol>
+<p>FYI:</p>
+<blockquote>
+<p><strong>RemoteSigned</strong></p>
+<ul>
+<li>The default execution policy for Windows server computers.</li>
+<li>Scripts can run.</li>
+<li>Requires a digital signature from a trusted publisher on scripts and configuration files that are downloaded from the internet which includes email and instant messaging programs.</li>
+<li>Doesn't require digital signatures on scripts that are written on the local computer and not downloaded from the internet.</li>
+<li>Runs scripts that are downloaded from the internet and not signed, if the scripts are unblocked, such as by using the <code>Unblock-File</code> cmdlet.</li>
+<li>Risks running unsigned scripts from sources other than the internet and signed scripts that could be malicious.</li>
+</ul>
+</blockquote>
+  </div><!-- /.entry-content -->
+</section>
+<script src="https://utteranc.es/client.js"
+  repo="honghe/jack"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>. 
+                The theme is by <a href="https://github.com/honghe/pelican-theme-blog">Pelican-Theme-Blog</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+  </div>
+</body>
+</html>

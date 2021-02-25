@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Pydium - Articles by Jack</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://honghe.github.io/jack/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Full Atom Feed" />
+        <link rel="stylesheet" type="text/css" href="https://honghe.github.io/jack/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+  <div class="content">
+        <header id="banner" class="body">
+                <h1><a href="https://honghe.github.io/jack/">Pydium</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+          <li><a href="https://honghe.github.io/jack/archives.html">Archives</a></li>
+            <li><a href="https://honghe.github.io/jack/category/cs.html">CS</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content">
+<h2>Articles by Jack</h2>
+
+<ol id="post-list">
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://honghe.github.io/jack/cpulimit.html" rel="bookmark" title="Permalink to cpulimit">cpulimit</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2021-02-25T10:20:00+08:00"> Thu 25 February 2021 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <h1>Use cpulimit in Ubuntu</h1>
+<p>There are 2 cpulimits we can use in Ubuntu:</p>
+<ul>
+<li>The Ubuntu system default <a href="http://limitcpu.sourceforge.net/index.php">cpulimit</a>, aka, LimitCPU, it is the direct child of <a href="http://cpulimit.sourceforge.net/">CPUlimit</a>, a creation of Angelo Marletta. The latest release date is 2019.</li>
+<li>The original <a href="https://github.com/Honghe/cpulimit">cpulimit</a> by Angelo Marletta, the latest release is on 2015 …</li></ul> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://honghe.github.io/jack/install-miniconda-in-windows-10-powershell-7.html" rel="bookmark" title="Permalink to Install Miniconda in Windows 10 PowerShell 7">Install Miniconda in Windows 10 PowerShell 7</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2021-02-23T18:20:00+08:00"> Tue 23 February 2021 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <h1>Steps</h1>
+<ol>
+<li>
+<p>Download Miniconda installer and install (use the default option).</p>
+</li>
+<li>
+<p>Open Anaconda PowerShell Prompt to init PowerShell, it will generate file <code>Documents\WindowsPowerShell\profile.ps1</code>.</p>
+<p><code>conda init powershell</code></p>
+</li>
+<li>
+<p>Meet the execution policies problem when open new PowerShell Prompt.</p>
+<p><code>conda Documents\WindowsPowerShell\profile.ps1  cannot be loaded because running scripts is …</code></p></li></ol> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://honghe.github.io/jack/demo-pelican-images-relative-path.html" rel="bookmark" title="Permalink to Demo Pelican images relative path">Demo Pelican images relative path</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2021-02-23T15:20:00+08:00"> Tue 23 February 2021 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Show image in directory relative to current article file path.</p>
+<div class="highlight"><pre><span></span><code>├── content
+│   └── test_images_relative_path
+│       ├── images
+│       │   └── smile.png
+│       └── test_images_relative_path.md
+</code></pre></div>
+
+
+<p>How to use <code>smile.png</code> image, we have to add <code>{static}</code> prefix.</p>
+<div class="highlight"><pre><span></span><code>!<span class="o">[]({</span>static<span class="o">}</span>./images/smile.png<span class="o">)</span>
+</code></pre></div>
+
+
+<p>Rendered html output:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/test_images_relative_path/images/smile.png&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>We can see the image now.</p>
+<p><img alt="" src="https://honghe.github.io/jack/test_images_relative_path/images/smile.png"></p>
+<p>But …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://honghe.github.io/jack/clipboard-with-multi-formats.html" rel="bookmark" title="Permalink to Clipboard with multi formats">Clipboard with multi formats</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2021-02-23T14:20:00+08:00"> Tue 23 February 2021 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <h1>Clipboard multi formats</h1>
+<p>A window can place more than one object on the clipboard, each representing the same information in a different clipboard format.  Ref: <a href="https://docs.microsoft.com/en-us/windows/win32/dataxchg/clipboard-formats?redirectedfrom=MSDN">clipboard formats</a>.</p>
+<p>This is an example:</p>
+<div class="highlight"><pre><span></span><code>TIMESTAMP
+TARGETS
+SAVE_TARGETS
+MULTIPLE
+text/plain
+text/html
+</code></pre></div>
+
+
+<h1>Ubuntu/LInux Platform</h1>
+<p>PyGTK is lack of documents, so I use …</p> </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header> <h2 class="entry-title"><a href="https://honghe.github.io/jack/pelican-as-blog.html" rel="bookmark" title="Permalink to Pelican as blog">Pelican as blog</a></h2> </header>
+                <footer class="post-info">
+                    <time class="published" datetime="2021-02-23T10:20:00+08:00"> Tue 23 February 2021 </time>
+                    <address class="vcard author">By
+                        <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+                    </address>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <h1>Markdown meta data</h1>
+<p>Pelican supports Markdown via <a href="https://python-markdown.github.io/">Python-Markdown</a>, Markdown meta-data is handled by its <a href="https://python-markdown.github.io/extensions/meta_data/">Meta-Data extension</a>, this extension supports  YAML style delimiters to mark the start and/or end of your meta-data.</p>
+<div class="highlight"><pre><span></span><code>---
+Title: this is as title.
+---
+</code></pre></div>
+
+
+<h1>Markdown supports latex math</h1>
+<p>The plugin <a href="https://github.com/pelican-plugins/render-math">pelican-render-math</a> gives <a href="https://github.com/getpelican/pelican">Pelican</a> the ability to render …</p> </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
+</section><!-- /#content -->
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>. 
+                The theme is by <a href="https://github.com/honghe/pelican-theme-blog">Pelican-Theme-Blog</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+  </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Pydium - Demo Pelican images relative path</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://honghe.github.io/jack/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Full Atom Feed" />
+        <link href="https://honghe.github.io/jack/feeds/cs.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Categories Atom Feed" />
+        <link rel="stylesheet" type="text/css" href="https://honghe.github.io/jack/theme/css/main.css" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+  <div class="content">
+        <header id="banner" class="body">
+                <h1><a href="https://honghe.github.io/jack/">Pydium</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+          <li><a href="https://honghe.github.io/jack/archives.html">Archives</a></li>
+            <li class="active"><a href="https://honghe.github.io/jack/category/cs.html">CS</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://honghe.github.io/jack/demo-pelican-images-relative-path.html" rel="bookmark"
+         title="Permalink to Demo Pelican images relative path">Demo Pelican images relative path</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2021-02-23T15:20:00+08:00">
+      Tue 23 February 2021
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://honghe.github.io/jack/category/cs.html">CS</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Show image in directory relative to current article file path.</p>
+<div class="highlight"><pre><span></span><code>├── content
+│   └── test_images_relative_path
+│       ├── images
+│       │   └── smile.png
+│       └── test_images_relative_path.md
+</code></pre></div>
+
+
+<p>How to use <code>smile.png</code> image, we have to add <code>{static}</code> prefix.</p>
+<div class="highlight"><pre><span></span><code>!<span class="o">[]({</span>static<span class="o">}</span>./images/smile.png<span class="o">)</span>
+</code></pre></div>
+
+
+<p>Rendered html output:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/test_images_relative_path/images/smile.png&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<p>We can see the image now.</p>
+<p><img alt="" src="https://honghe.github.io/jack/test_images_relative_path/images/smile.png"></p>
+<p>But how can we do this without <code>{static}</code> prefix? Bause the <code>{static}</code> prefix is not friendly with other Markdown editor such Typora.</p>
+  </div><!-- /.entry-content -->
+</section>
+<script src="https://utteranc.es/client.js"
+  repo="honghe/jack"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>. 
+                The theme is by <a href="https://github.com/honghe/pelican-theme-blog">Pelican-Theme-Blog</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+  </div>
+</body>
+</html>

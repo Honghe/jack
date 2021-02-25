@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Pydium - CS</title><link href="https://honghe.github.io/jack/" rel="alternate"></link><link href="https://honghe.github.io/jack/feeds/cs.atom.xml" rel="self"></link><id>https://honghe.github.io/jack/</id><updated>2021-02-25T10:20:00+08:00</updated><entry><title>cpulimit</title><link href="https://honghe.github.io/jack/cpulimit.html" rel="alternate"></link><published>2021-02-25T10:20:00+08:00</published><updated>2021-02-25T10:20:00+08:00</updated><author><name>Jack</name></author><id>tag:honghe.github.io,2021-02-25:/jack/cpulimit.html</id><summary type="html">&lt;h1&gt;Use cpulimit in Ubuntu&lt;/h1&gt;
+&lt;p&gt;There are 2 cpulimits we can use in Ubuntu:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Ubuntu system default &lt;a href="http://limitcpu.sourceforge.net/index.php"&gt;cpulimit&lt;/a&gt;, aka, LimitCPU, it is the direct child of &lt;a href="http://cpulimit.sourceforge.net/"&gt;CPUlimit&lt;/a&gt;, a creation of Angelo Marletta. The latest release date is 2019.&lt;/li&gt;
+&lt;li&gt;The original &lt;a href="https://github.com/Honghe/cpulimit"&gt;cpulimit&lt;/a&gt; by Angelo Marletta, the latest release is on 2015 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;Use cpulimit in Ubuntu&lt;/h1&gt;
+&lt;p&gt;There are 2 cpulimits we can use in Ubuntu:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Ubuntu system default &lt;a href="http://limitcpu.sourceforge.net/index.php"&gt;cpulimit&lt;/a&gt;, aka, LimitCPU, it is the direct child of &lt;a href="http://cpulimit.sourceforge.net/"&gt;CPUlimit&lt;/a&gt;, a creation of Angelo Marletta. The latest release date is 2019.&lt;/li&gt;
+&lt;li&gt;The original &lt;a href="https://github.com/Honghe/cpulimit"&gt;cpulimit&lt;/a&gt; by Angelo Marletta, the latest release is on 2015.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Ubuntu default cpulimit&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;SYNOPSIS
+       cpulimit &lt;span class="o"&gt;[&lt;/span&gt;TARGET&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;OPTIONS...&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -- PROGRAM&lt;span class="o"&gt;]&lt;/span&gt;
+DESCRIPTION
+       TARGET must be exactly one of these:
+       -p, --pid&lt;span class="o"&gt;=&lt;/span&gt;N
+              pid of the process
+       -e, --exe&lt;span class="o"&gt;=&lt;/span&gt;FILE
+              name of the executable program file
+       -P, --path&lt;span class="o"&gt;=&lt;/span&gt;PATH
+              absolute path name of the executable program file
+       OPTIONS
+       -b, --background
+              run cpulimit in the background, freeing up the terminal
+       -f, --foreground
+              run cpulimit in foreground &lt;span class="k"&gt;while&lt;/span&gt; waiting &lt;span class="k"&gt;for&lt;/span&gt; launched process to finish
+       -c, --cpu
+              specify the number of CPU cores available. Usually this is detected &lt;span class="k"&gt;for&lt;/span&gt; us.
+       -l, --limit&lt;span class="o"&gt;=&lt;/span&gt;N
+              percentage of CPU allowed from &lt;span class="m"&gt;1&lt;/span&gt; up. Usually &lt;span class="m"&gt;1&lt;/span&gt; - &lt;span class="m"&gt;100&lt;/span&gt;, but can be higher on multi-core CPUs. &lt;span class="o"&gt;(&lt;/span&gt;mandatory&lt;span class="o"&gt;)&lt;/span&gt;
+       -q, --quiet
+              Runs in quiet mode, avoids writing update messages to console.
+       -k, --kill
+              &lt;span class="nb"&gt;kill&lt;/span&gt; target process instead of throttling its CPU usage
+       -m, --monitor-forks
+              watch  and  throttle  child  processes of the target process Warning: It is usually a bad idea to use this flag on a shell script. The commands in the script will each spawn a
+              process which will, in turn, spawn more copies of this program to throttle them, bogging down the system.
+       -r, --restore
+              restore a process killed using the -k flag.
+       -s, --signal
+              send an alternative signal to the watched process when we exit. Default is SIGCONT.
+       -v, --verbose
+              show control statistics
+       -z, --lazy
+              &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; there is no suitable target process, or &lt;span class="k"&gt;if&lt;/span&gt; it dies
+       --     This is the final CPUlimit option. All following options are &lt;span class="k"&gt;for&lt;/span&gt; another program we will launch.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;&lt;a href="https://github.com/Honghe/cpulimit"&gt;cpulimit&lt;/a&gt; by Angelo Marletta&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Usage: cpulimit &lt;span class="o"&gt;[&lt;/span&gt;OPTIONS...&lt;span class="o"&gt;]&lt;/span&gt; TARGET
+   OPTIONS
+      -l, --limit&lt;span class="o"&gt;=&lt;/span&gt;N          percentage of cpu allowed from &lt;span class="m"&gt;0&lt;/span&gt; to &lt;span class="m"&gt;1200&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;required&lt;span class="o"&gt;)&lt;/span&gt;
+      -v, --verbose          show control statistics
+      -z, --lazy             &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; there is no target process, or &lt;span class="k"&gt;if&lt;/span&gt; it dies
+      -i, --include-children limit also the children processes
+      -h, --help             display this &lt;span class="nb"&gt;help&lt;/span&gt; and &lt;span class="nb"&gt;exit&lt;/span&gt;
+   TARGET must be exactly one of these:
+      -p, --pid&lt;span class="o"&gt;=&lt;/span&gt;N            pid of the process &lt;span class="o"&gt;(&lt;/span&gt;implies -z&lt;span class="o"&gt;)&lt;/span&gt;
+      -e, --exe&lt;span class="o"&gt;=&lt;/span&gt;FILE         name of the executable program file or path name
+      COMMAND &lt;span class="o"&gt;[&lt;/span&gt;ARGS&lt;span class="o"&gt;]&lt;/span&gt;         run this &lt;span class="nb"&gt;command&lt;/span&gt; and limit it &lt;span class="o"&gt;(&lt;/span&gt;implies -z&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="CS"></category></entry><entry><title>Install Miniconda in Windows 10 PowerShell 7</title><link href="https://honghe.github.io/jack/install-miniconda-in-windows-10-powershell-7.html" rel="alternate"></link><published>2021-02-23T18:20:00+08:00</published><updated>2021-02-23T18:20:00+08:00</updated><author><name>Jack</name></author><id>tag:honghe.github.io,2021-02-23:/jack/install-miniconda-in-windows-10-powershell-7.html</id><summary type="html">&lt;h1&gt;Steps&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Download Miniconda installer and install (use the default option).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open Anaconda PowerShell Prompt to init PowerShell, it will generate file &lt;code&gt;Documents\WindowsPowerShell\profile.ps1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;conda init powershell&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Meet the execution policies problem when open new PowerShell Prompt.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;conda Documents\WindowsPowerShell\profile.ps1  cannot be loaded because running scripts is …&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h1&gt;Steps&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Download Miniconda installer and install (use the default option).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open Anaconda PowerShell Prompt to init PowerShell, it will generate file &lt;code&gt;Documents\WindowsPowerShell\profile.ps1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;conda init powershell&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Meet the execution policies problem when open new PowerShell Prompt.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;conda Documents\WindowsPowerShell\profile.ps1  cannot be loaded because running scripts is disabled on this system.&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deal with the above &lt;a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1"&gt;Windows Execution Policies&lt;/a&gt; problem.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open PowerShell as Administrator.&lt;/li&gt;
+&lt;li&gt;[Maybe] &lt;code&gt;Unblock-File&lt;/code&gt; the &lt;code&gt;Documents\WindowsPowerShell\profile.ps1&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Set-ExecutionPolicy -ExecutionPolicy RemoteSigned&lt;/code&gt;. Ref: &lt;a href="https://github.com/conda/conda/issues/8428"&gt;https://github.com/conda/conda/issues/8428.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Done.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;FYI:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;RemoteSigned&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The default execution policy for Windows server computers.&lt;/li&gt;
+&lt;li&gt;Scripts can run.&lt;/li&gt;
+&lt;li&gt;Requires a digital signature from a trusted publisher on scripts and configuration files that are downloaded from the internet which includes email and instant messaging programs.&lt;/li&gt;
+&lt;li&gt;Doesn't require digital signatures on scripts that are written on the local computer and not downloaded from the internet.&lt;/li&gt;
+&lt;li&gt;Runs scripts that are downloaded from the internet and not signed, if the scripts are unblocked, such as by using the &lt;code&gt;Unblock-File&lt;/code&gt; cmdlet.&lt;/li&gt;
+&lt;li&gt;Risks running unsigned scripts from sources other than the internet and signed scripts that could be malicious.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;</content><category term="CS"></category></entry><entry><title>Demo Pelican images relative path</title><link href="https://honghe.github.io/jack/demo-pelican-images-relative-path.html" rel="alternate"></link><published>2021-02-23T15:20:00+08:00</published><updated>2021-02-23T15:20:00+08:00</updated><author><name>Jack</name></author><id>tag:honghe.github.io,2021-02-23:/jack/demo-pelican-images-relative-path.html</id><summary type="html">&lt;p&gt;Show image in directory relative to current article file path.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;├── content
+│   └── test_images_relative_path
+│       ├── images
+│       │   └── smile.png
+│       └── test_images_relative_path.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;How to use &lt;code&gt;smile.png&lt;/code&gt; image, we have to add &lt;code&gt;{static}&lt;/code&gt; prefix.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;!&lt;span class="o"&gt;[]({&lt;/span&gt;static&lt;span class="o"&gt;}&lt;/span&gt;./images/smile.png&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Rendered html output:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/test_images_relative_path/images/smile.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can see the image now.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://honghe.github.io/jack/test_images_relative_path/images/smile.png"&gt;&lt;/p&gt;
+&lt;p&gt;But …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Show image in directory relative to current article file path.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;├── content
+│   └── test_images_relative_path
+│       ├── images
+│       │   └── smile.png
+│       └── test_images_relative_path.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;How to use &lt;code&gt;smile.png&lt;/code&gt; image, we have to add &lt;code&gt;{static}&lt;/code&gt; prefix.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;!&lt;span class="o"&gt;[]({&lt;/span&gt;static&lt;span class="o"&gt;}&lt;/span&gt;./images/smile.png&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Rendered html output:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/test_images_relative_path/images/smile.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can see the image now.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://honghe.github.io/jack/test_images_relative_path/images/smile.png"&gt;&lt;/p&gt;
+&lt;p&gt;But how can we do this without &lt;code&gt;{static}&lt;/code&gt; prefix? Bause the &lt;code&gt;{static}&lt;/code&gt; prefix is not friendly with other Markdown editor such Typora.&lt;/p&gt;</content><category term="CS"></category></entry><entry><title>Clipboard with multi formats</title><link href="https://honghe.github.io/jack/clipboard-with-multi-formats.html" rel="alternate"></link><published>2021-02-23T14:20:00+08:00</published><updated>2021-02-23T14:20:00+08:00</updated><author><name>Jack</name></author><id>tag:honghe.github.io,2021-02-23:/jack/clipboard-with-multi-formats.html</id><summary type="html">&lt;h1&gt;Clipboard multi formats&lt;/h1&gt;
+&lt;p&gt;A window can place more than one object on the clipboard, each representing the same information in a different clipboard format.  Ref: &lt;a href="https://docs.microsoft.com/en-us/windows/win32/dataxchg/clipboard-formats?redirectedfrom=MSDN"&gt;clipboard formats&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is an example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;TIMESTAMP
+TARGETS
+SAVE_TARGETS
+MULTIPLE
+text/plain
+text/html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Ubuntu/LInux Platform&lt;/h1&gt;
+&lt;p&gt;PyGTK is lack of documents, so I use …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Clipboard multi formats&lt;/h1&gt;
+&lt;p&gt;A window can place more than one object on the clipboard, each representing the same information in a different clipboard format.  Ref: &lt;a href="https://docs.microsoft.com/en-us/windows/win32/dataxchg/clipboard-formats?redirectedfrom=MSDN"&gt;clipboard formats&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is an example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;TIMESTAMP
+TARGETS
+SAVE_TARGETS
+MULTIPLE
+text/plain
+text/html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Ubuntu/LInux Platform&lt;/h1&gt;
+&lt;p&gt;PyGTK is lack of documents, so I use PySide6 to check clipboard contents, PySide2 is OK too. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PySide6.QtCore&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Qt&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PySide6.QtWidgets&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QApplication&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PySide6.QtGui&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QGuiApplication&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QApplication&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;clipboard&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QGuiApplication&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clipboard&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;mimedata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;clipboard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mimeData&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# list formats current mimedata supports&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mimedata&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;formats&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+&lt;span class="c1"&gt;# e.g. print copied html format content&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;mimedata&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hasHtml&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mimedata&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Or you can use the open source program &lt;a href="https://github.com/hluk/CopyQ"&gt;https://github.com/hluk/CopyQ&lt;/a&gt;.&lt;/p&gt;
+&lt;h1&gt;Windows Platform&lt;/h1&gt;
+&lt;p&gt;We can use the same tools as the Ubuntu platform.&lt;/p&gt;
+&lt;h1&gt;Chrome/Web&lt;/h1&gt;
+&lt;p&gt;If wen want to access clipboard in Web, we need the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API"&gt;Permission API&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;But we can use &lt;code&gt;Element.addEventListener()&lt;/code&gt; to listen events: copy, paste, cut.&lt;/p&gt;
+&lt;p&gt;Then via &lt;code&gt;clipboardData.getData()&lt;/code&gt; to fetch the data copied or pasted. the data formats most supported can find here https://www.w3.org/TR/clipboard-apis/#reading-from-clipboard.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;target&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;contenteditable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;pasting it into this one.&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;querySelector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;div.target&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="nx"&gt;target&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paste&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;paste&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;clipboardData&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;clipboardData&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;getData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;paste event&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;selection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getSelection&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;selection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;rangeCount&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="nx"&gt;selection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;deleteFromDocument&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+            &lt;span class="nx"&gt;selection&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getRangeAt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;insertNode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createTextNode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+            &lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;preventDefault&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ref: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;https://developer.mozilla.org/en-US/docs/Web/API/Element/paste_event&lt;/li&gt;
+&lt;li&gt;https://www.lucidchart.com/techblog/2014/12/02/definitive-guide-copying-pasting-javascript/&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CS"></category></entry><entry><title>Pelican as blog</title><link href="https://honghe.github.io/jack/pelican-as-blog.html" rel="alternate"></link><published>2021-02-23T10:20:00+08:00</published><updated>2021-02-23T10:20:00+08:00</updated><author><name>Jack</name></author><id>tag:honghe.github.io,2021-02-23:/jack/pelican-as-blog.html</id><summary type="html">&lt;h1&gt;Markdown meta data&lt;/h1&gt;
+&lt;p&gt;Pelican supports Markdown via &lt;a href="https://python-markdown.github.io/"&gt;Python-Markdown&lt;/a&gt;, Markdown meta-data is handled by its &lt;a href="https://python-markdown.github.io/extensions/meta_data/"&gt;Meta-Data extension&lt;/a&gt;, this extension supports  YAML style delimiters to mark the start and/or end of your meta-data.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
+Title: this is as title.
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Markdown supports latex math&lt;/h1&gt;
+&lt;p&gt;The plugin &lt;a href="https://github.com/pelican-plugins/render-math"&gt;pelican-render-math&lt;/a&gt; gives &lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt; the ability to render …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Markdown meta data&lt;/h1&gt;
+&lt;p&gt;Pelican supports Markdown via &lt;a href="https://python-markdown.github.io/"&gt;Python-Markdown&lt;/a&gt;, Markdown meta-data is handled by its &lt;a href="https://python-markdown.github.io/extensions/meta_data/"&gt;Meta-Data extension&lt;/a&gt;, this extension supports  YAML style delimiters to mark the start and/or end of your meta-data.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
+Title: this is as title.
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Markdown supports latex math&lt;/h1&gt;
+&lt;p&gt;The plugin &lt;a href="https://github.com/pelican-plugins/render-math"&gt;pelican-render-math&lt;/a&gt; gives &lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt; the ability to render mathematics inside post content. It accomplishes this by using the &lt;a href="https://www.mathjax.org/"&gt;MathJax&lt;/a&gt; JavaScript engine.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Inline Math: &lt;span class="math"&gt;\(E=mc^2\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Displayed Math&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="math"&gt;$$
+E = mc^2
+$$&lt;/div&gt;
+&lt;h1&gt;Images relative path&lt;/h1&gt;
+&lt;p&gt;By default, if the images are not in the &lt;code&gt;content/images&lt;/code&gt;, we need add prefix &lt;code&gt;{static}&lt;/code&gt; on image tag:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;!&lt;span class="o"&gt;[]({&lt;/span&gt;static&lt;span class="o"&gt;}&lt;/span&gt;./images/demo.png&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and the generated html is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;lt;img alt=&amp;quot;&amp;quot; src=&amp;quot;/test_images_relative_path/images/smile.png&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;&lt;code&gt;.html&lt;/code&gt; file in output directory lead to octet-stream&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;.html&lt;/code&gt; file in generated output directory lead to browser open octet-stream of &lt;code&gt;.html&lt;/code&gt; file instead of open &lt;code&gt;index.html&lt;/code&gt; when visit &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;locahost://127.0.0.1:8000&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pelican -r -l -D&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="image-20210223155713652" src="./images/image-20210223155713652.png"&gt;&lt;/p&gt;
+&lt;h1&gt;Markdown intent&lt;/h1&gt;
+&lt;p&gt;Ref Markdown plugin: https://github.com/radude/mdx_truly_sane_lists&lt;/p&gt;
+&lt;h1&gt;Theme&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pelican-themes -lv
+&lt;span class="se"&gt;\e&lt;/span&gt;nvs&lt;span class="se"&gt;\p&lt;/span&gt;elican&lt;span class="se"&gt;\l&lt;/span&gt;ib&lt;span class="se"&gt;\s&lt;/span&gt;ite-packages&lt;span class="se"&gt;\p&lt;/span&gt;elican&lt;span class="se"&gt;\t&lt;/span&gt;hemes&lt;span class="se"&gt;\n&lt;/span&gt;otmyidea
+&lt;span class="se"&gt;\e&lt;/span&gt;nvs&lt;span class="se"&gt;\p&lt;/span&gt;elican&lt;span class="se"&gt;\l&lt;/span&gt;ib&lt;span class="se"&gt;\s&lt;/span&gt;ite-packages&lt;span class="se"&gt;\p&lt;/span&gt;elican&lt;span class="se"&gt;\t&lt;/span&gt;hemes&lt;span class="se"&gt;\s&lt;/span&gt;imple
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The default theme is &lt;code&gt;notmyidea&lt;/code&gt;, but the &lt;code&gt;simple&lt;/code&gt; theme is a good start, it only contains template, without css and javascript.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="CS"></category></entry></feed>

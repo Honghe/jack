@@ -1,0 +1,36 @@
+.content {
+    /* font-family : monospace ; */
+    /* font-size : 100% ; */
+    background-color : white ;
+    color : #111 ;
+    max-width : 800px ;
+    min-width : 400px ;
+    min-height : 200px ;
+    padding : 1em ;
+    margin: auto;
+    border : thin solid gray ;
+    border-radius : 5px ;
+    display : block ;
+}
+
+a:link    { color : rgb(59, 59, 226) ; text-decoration : none ;      }
+a:hover   { color : blue ; text-decoration : underline ; }
+a:visited { color : blue ;                               }
+
+h1 a { color : inherit !important }
+h2 a { color : inherit !important }
+h3 a { color : inherit !important }
+h4 a { color : inherit !important }
+h5 a { color : inherit !important }
+h6 a { color : inherit !important }
+
+#menu li {
+    display : inline ;
+}
+
+#post-list {
+    margin-bottom : 1em ;
+    margin-top : 1em ;
+}
+
+pre{background-color:  rgb(238, 238, 238); padding: 10px; margin: 10px; overflow: auto;}

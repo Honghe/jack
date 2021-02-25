@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Pydium - Pelican as blog</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://honghe.github.io/jack/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Full Atom Feed" />
+        <link href="https://honghe.github.io/jack/feeds/cs.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Categories Atom Feed" />
+        <link rel="stylesheet" type="text/css" href="https://honghe.github.io/jack/theme/css/main.css" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+  <div class="content">
+        <header id="banner" class="body">
+                <h1><a href="https://honghe.github.io/jack/">Pydium</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+          <li><a href="https://honghe.github.io/jack/archives.html">Archives</a></li>
+            <li class="active"><a href="https://honghe.github.io/jack/category/cs.html">CS</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://honghe.github.io/jack/pelican-as-blog.html" rel="bookmark"
+         title="Permalink to Pelican as blog">Pelican as blog</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2021-02-23T10:20:00+08:00">
+      Tue 23 February 2021
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://honghe.github.io/jack/category/cs.html">CS</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h1>Markdown meta data</h1>
+<p>Pelican supports Markdown via <a href="https://python-markdown.github.io/">Python-Markdown</a>, Markdown meta-data is handled by its <a href="https://python-markdown.github.io/extensions/meta_data/">Meta-Data extension</a>, this extension supports  YAML style delimiters to mark the start and/or end of your meta-data.</p>
+<div class="highlight"><pre><span></span><code>---
+Title: this is as title.
+---
+</code></pre></div>
+
+
+<h1>Markdown supports latex math</h1>
+<p>The plugin <a href="https://github.com/pelican-plugins/render-math">pelican-render-math</a> gives <a href="https://github.com/getpelican/pelican">Pelican</a> the ability to render mathematics inside post content. It accomplishes this by using the <a href="https://www.mathjax.org/">MathJax</a> JavaScript engine.</p>
+<ul>
+<li>Inline Math: <span class="math">\(E=mc^2\)</span></li>
+<li>Displayed Math</li>
+</ul>
+<div class="math">$$
+E = mc^2
+$$</div>
+<h1>Images relative path</h1>
+<p>By default, if the images are not in the <code>content/images</code>, we need add prefix <code>{static}</code> on image tag:</p>
+<div class="highlight"><pre><span></span><code>!<span class="o">[]({</span>static<span class="o">}</span>./images/demo.png<span class="o">)</span>
+</code></pre></div>
+
+
+<p>and the generated html is:</p>
+<div class="highlight"><pre><span></span><code><span class="err">&lt;img alt=&quot;&quot; src=&quot;/test_images_relative_path/images/smile.png&quot;&gt;</span>
+</code></pre></div>
+
+
+<h1><code>.html</code> file in output directory lead to octet-stream</h1>
+<p>The <code>.html</code> file in generated output directory lead to browser open octet-stream of <code>.html</code> file instead of open <code>index.html</code> when visit </p>
+<p><code>locahost://127.0.0.1:8000</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="err">pelican -r -l -D</span>
+</code></pre></div>
+
+
+<p><img alt="image-20210223155713652" src="./images/image-20210223155713652.png"></p>
+<h1>Markdown intent</h1>
+<p>Ref Markdown plugin: https://github.com/radude/mdx_truly_sane_lists</p>
+<h1>Theme</h1>
+<div class="highlight"><pre><span></span><code>$ pelican-themes -lv
+<span class="se">\e</span>nvs<span class="se">\p</span>elican<span class="se">\l</span>ib<span class="se">\s</span>ite-packages<span class="se">\p</span>elican<span class="se">\t</span>hemes<span class="se">\n</span>otmyidea
+<span class="se">\e</span>nvs<span class="se">\p</span>elican<span class="se">\l</span>ib<span class="se">\s</span>ite-packages<span class="se">\p</span>elican<span class="se">\t</span>hemes<span class="se">\s</span>imple
+</code></pre></div>
+
+
+<p>The default theme is <code>notmyidea</code>, but the <code>simple</code> theme is a good start, it only contains template, without css and javascript.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div><!-- /.entry-content -->
+</section>
+<script src="https://utteranc.es/client.js"
+  repo="honghe/jack"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>. 
+                The theme is by <a href="https://github.com/honghe/pelican-theme-blog">Pelican-Theme-Blog</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+  </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Pydium - cpulimit</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://honghe.github.io/jack/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Full Atom Feed" />
+        <link href="https://honghe.github.io/jack/feeds/cs.atom.xml" type="application/atom+xml" rel="alternate" title="Pydium Categories Atom Feed" />
+        <link rel="stylesheet" type="text/css" href="https://honghe.github.io/jack/theme/css/main.css" />
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+  <div class="content">
+        <header id="banner" class="body">
+                <h1><a href="https://honghe.github.io/jack/">Pydium</a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+          <li><a href="https://honghe.github.io/jack/archives.html">Archives</a></li>
+            <li class="active"><a href="https://honghe.github.io/jack/category/cs.html">CS</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://honghe.github.io/jack/cpulimit.html" rel="bookmark"
+         title="Permalink to cpulimit">cpulimit</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2021-02-25T10:20:00+08:00">
+      Thu 25 February 2021
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://honghe.github.io/jack/author/jack.html">Jack</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://honghe.github.io/jack/category/cs.html">CS</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h1>Use cpulimit in Ubuntu</h1>
+<p>There are 2 cpulimits we can use in Ubuntu:</p>
+<ul>
+<li>The Ubuntu system default <a href="http://limitcpu.sourceforge.net/index.php">cpulimit</a>, aka, LimitCPU, it is the direct child of <a href="http://cpulimit.sourceforge.net/">CPUlimit</a>, a creation of Angelo Marletta. The latest release date is 2019.</li>
+<li>The original <a href="https://github.com/Honghe/cpulimit">cpulimit</a> by Angelo Marletta, the latest release is on 2015.</li>
+</ul>
+<h2>Ubuntu default cpulimit</h2>
+<div class="highlight"><pre><span></span><code>SYNOPSIS
+       cpulimit <span class="o">[</span>TARGET<span class="o">]</span> <span class="o">[</span>OPTIONS...<span class="o">]</span> <span class="o">[</span> -- PROGRAM<span class="o">]</span>
+DESCRIPTION
+       TARGET must be exactly one of these:
+       -p, --pid<span class="o">=</span>N
+              pid of the process
+       -e, --exe<span class="o">=</span>FILE
+              name of the executable program file
+       -P, --path<span class="o">=</span>PATH
+              absolute path name of the executable program file
+       OPTIONS
+       -b, --background
+              run cpulimit in the background, freeing up the terminal
+       -f, --foreground
+              run cpulimit in foreground <span class="k">while</span> waiting <span class="k">for</span> launched process to finish
+       -c, --cpu
+              specify the number of CPU cores available. Usually this is detected <span class="k">for</span> us.
+       -l, --limit<span class="o">=</span>N
+              percentage of CPU allowed from <span class="m">1</span> up. Usually <span class="m">1</span> - <span class="m">100</span>, but can be higher on multi-core CPUs. <span class="o">(</span>mandatory<span class="o">)</span>
+       -q, --quiet
+              Runs in quiet mode, avoids writing update messages to console.
+       -k, --kill
+              <span class="nb">kill</span> target process instead of throttling its CPU usage
+       -m, --monitor-forks
+              watch  and  throttle  child  processes of the target process Warning: It is usually a bad idea to use this flag on a shell script. The commands in the script will each spawn a
+              process which will, in turn, spawn more copies of this program to throttle them, bogging down the system.
+       -r, --restore
+              restore a process killed using the -k flag.
+       -s, --signal
+              send an alternative signal to the watched process when we exit. Default is SIGCONT.
+       -v, --verbose
+              show control statistics
+       -z, --lazy
+              <span class="nb">exit</span> <span class="k">if</span> there is no suitable target process, or <span class="k">if</span> it dies
+       --     This is the final CPUlimit option. All following options are <span class="k">for</span> another program we will launch.
+</code></pre></div>
+
+
+<h2><a href="https://github.com/Honghe/cpulimit">cpulimit</a> by Angelo Marletta</h2>
+<div class="highlight"><pre><span></span><code>Usage: cpulimit <span class="o">[</span>OPTIONS...<span class="o">]</span> TARGET
+   OPTIONS
+      -l, --limit<span class="o">=</span>N          percentage of cpu allowed from <span class="m">0</span> to <span class="m">1200</span> <span class="o">(</span>required<span class="o">)</span>
+      -v, --verbose          show control statistics
+      -z, --lazy             <span class="nb">exit</span> <span class="k">if</span> there is no target process, or <span class="k">if</span> it dies
+      -i, --include-children limit also the children processes
+      -h, --help             display this <span class="nb">help</span> and <span class="nb">exit</span>
+   TARGET must be exactly one of these:
+      -p, --pid<span class="o">=</span>N            pid of the process <span class="o">(</span>implies -z<span class="o">)</span>
+      -e, --exe<span class="o">=</span>FILE         name of the executable program file or path name
+      COMMAND <span class="o">[</span>ARGS<span class="o">]</span>         run this <span class="nb">command</span> and limit it <span class="o">(</span>implies -z<span class="o">)</span>
+</code></pre></div>
+  </div><!-- /.entry-content -->
+</section>
+<script src="https://utteranc.es/client.js"
+  repo="honghe/jack"
+  issue-term="pathname"
+  theme="github-light"
+  crossorigin="anonymous"
+  async>
+</script>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>. 
+                The theme is by <a href="https://github.com/honghe/pelican-theme-blog">Pelican-Theme-Blog</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+  </div>
+</body>
+</html>
